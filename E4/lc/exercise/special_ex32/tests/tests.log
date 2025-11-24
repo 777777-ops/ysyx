@@ -1,0 +1,49 @@
+DEBUG tests/list_tests.c:142: ----- RUNNING: ./tests/list_tests
+DEBUG tests/list_tests.c:131: 
+----- test_create
+DEBUG tests/list_tests.c:132: 
+----- test_push_pop
+DEBUG tests/list_tests.c:133: 
+----- test_unshift
+DEBUG tests/list_tests.c:134: 
+----- test_remove
+DEBUG tests/list_tests.c:135: 
+----- test_shift
+DEBUG tests/list_tests.c:136: 
+----- test_destroy
+DEBUG tests/list_tests.c:137: 
+----- test_copy
+[ERROR] (tests/list_tests.c:29 test_copy) errno: None | Wrong count on push.
+DEBUG tests/list_tests.c:142: ----- RUNNING: ./tests/list_tests
+DEBUG tests/list_tests.c:131: 
+----- test_create
+DEBUG tests/list_tests.c:132: 
+----- test_push_pop
+DEBUG tests/list_tests.c:133: 
+----- test_unshift
+DEBUG tests/list_tests.c:134: 
+----- test_remove
+DEBUG tests/list_tests.c:135: 
+----- test_shift
+DEBUG tests/list_tests.c:136: 
+----- test_destroy
+DEBUG tests/list_tests.c:137: 
+----- test_copy
+[ERROR] (tests/list_tests.c:29 test_copy) errno: None | Wrong count on push.
+DEBUG tests/list_tests.c:143: ----- RUNNING: ./tests/list_tests
+DEBUG tests/list_tests.c:131: 
+----- test_create
+DEBUG tests/list_tests.c:132: 
+----- test_push_pop
+DEBUG tests/list_tests.c:133: 
+----- test_unshift
+DEBUG tests/list_tests.c:134: 
+----- test_remove
+DEBUG tests/list_tests.c:135: 
+----- test_shift
+DEBUG tests/list_tests.c:136: 
+----- test_destroy
+DEBUG tests/list_tests.c:137: 
+----- test_create
+DEBUG tests/list_tests.c:138: 
+----- test_copy
