@@ -2,6 +2,8 @@
 
 static uint32_t regs[32];
 
+uint32_t* tp = &regs[4];
+
 uint32_t read_reg(uint8_t rs){
     return regs[rs];
 }

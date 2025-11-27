@@ -14,6 +14,7 @@ struct signs{
     uint8_t WBSel; //2
     uint8_t WSel;  //4
     uint8_t RSel;  //4
+    bool Zero;
 };
 
 

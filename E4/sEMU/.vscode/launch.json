@@ -1,12 +1,12 @@
 {
     "version": "0.2.0",
-    "configurations": [
+    "configurations": [ 
         {
             "name": "Debug main",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/tests/main",
-            "args": ["sum.bin"],
+            "args": ["mem.bin"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
@@ -21,6 +21,26 @@
             ],
             "preLaunchTask": "build-with-make",
             "miDebuggerPath": "/usr/bin/gdb"
-        }
+        },
+        {
+            "name": "Run VGA Test",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/usr/bin/make",
+            "args": ["gdb", "ARCH=native", "run"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/tests/vga",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+            {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+            }
+            ],
+            "miDebuggerPath": "/usr/bin/gdb"
+            }
     ]
 }

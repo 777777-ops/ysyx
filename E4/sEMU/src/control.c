@@ -33,4 +33,6 @@ void parse_inst(uint32_t inst, struct signs* signs){
 	   	  EQU(funct3,0x0) ? 0x1 :
 		  EQU(funct3,0x2) ? 0xf :
 		  0x0; 
+    
+    signs->Zero = EQU(opcode,0x37);
 }

@@ -14,6 +14,7 @@ uint32_t imm;
 
 struct signs sign;
 
+
 //解析指令中的寄存器信息,顺带提取
 static void parse_reg(){
     rd  = (inst >> 7)  & 0x1F;  // 位11-7
@@ -36,24 +37,30 @@ static void check_end(){
 //主循环
 bool cycle(){
    //取指
+
    inst = get_inst(pc);
 
    //ebreak
    if(EQU(inst,0x00100073)){
+       // printf("--------------\n");
    	check_end();
-	return false;
+	   return false;
    }
 
    //解析
    parse_reg();
    parse_inst(inst, &sign);
+
+   //lui的补丁
+   if(sign.Zero)
+      reg_read1 = 0;
    imm = get_imm(inst, sign.ImmSel);
    //运行
    result = reg_read1 + (sign.BSel ? reg_read2 : imm);
 
    reg_write = EQU(sign.WBSel,0) ? result :
                EQU(sign.WBSel,1) ? read_mem(result, sign.RSel) :
-   	       EQU(sign.WBSel,2) ? (uint32_t)(pc + 4) : 0x0;
+   	         EQU(sign.WBSel,2) ? (uint32_t)(pc + 4) : 0x0;
 
 
 
@@ -63,6 +70,14 @@ bool cycle(){
    //写回内存
    if(sign.WSel)
 	write_mem(result, sign.WSel, reg_read2);
+
+   /*
+   if(pc == 0xbc)
+      printf("--------------\n");
+   printf("PC : %8x | INST: %8x  | GP: %8x | S0: %8x | SP: %8x \n",
+      pc, inst, read_reg(3),read_reg(8),read_reg(2));
+   */
+   
 
    pc = sign.PCSel ? result : pc + 4;
    return true;

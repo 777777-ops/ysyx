@@ -31,6 +31,7 @@ Disassembly of section .text:
       64:	00001237          	lui	tp,0x1
       68:	40020213          	addi	tp,tp,1024 # 1400 <_same_result_table>
       6c:	00320233          	add	tp,tp,gp
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       70:	00024203          	lbu	tp,0(tp) # 0 <_start>
       74:	ffc12403          	lw	s0,-4(sp)
 
@@ -182,6 +183,7 @@ Disassembly of section .text:
      278:	00e12223          	sw	a4,4(sp)
      27c:	00d12023          	sw	a3,0(sp)
      280:	01800093          	addi	ra,zero,24
+     --------------------------------------------------
      284:	000080e7          	jalr	ra,0(ra)
      288:	00412703          	lw	a4,4(sp)
      28c:	000497b7          	lui	a5,0x49

@@ -2,7 +2,7 @@ CFLAGS=-g -O0 -Wall -Wextra -Isrc -rdynamic -DNDEBUG $(OPTFLAGS)
 LIBS=-ldl $(OPTLIBS)
 PREFIX?=/usr/local
 
-SOURCES=$(wildcard src/**/*.c src/*.c)
+SOURCES=src/control.c src/cpu.c src/immSel.c src/memory.c src/regfile.c src/rom.c
 OBJECTS=$(patsubst %.c,%.o,$(SOURCES))
 
 TEST_SRC=tests/main.c
@@ -37,9 +37,6 @@ tests: $(TESTS)
 $(TESTS): %: %.c $(TARGET)
 	$(CC) $(CFLAGS) $< $(TARGET) -o $@
 
-valgrind:
-	VALGRIND="valgrind --log-file=/tmp/valgrind-%p.log" $(MAKE)
-
 # The Cleaner
 clean:
 	rm -rf build $(OBJECTS) $(TESTS)
@@ -47,13 +44,3 @@ clean:
 	find . -name "*.gc*" -exec rm {} \;
 	rm -rf `find . -name "*.dSYM" -print`
 
-# The Install
-install: all
-	install -d $(DESTDIR)/$(PREFIX)/lib/
-	install $(TARGET) $(DESTDIR)/$(PREFIX)/lib/
-
-# The Checker
-BADFUNCS='[^_.>a-zA-Z0-9](str(n?cpy|n?cat|xfrm|n?dup|str|pbrk|tok|_)|stpn?cpy|a?sn?printf|byte_)'
-check:
-	@echo Files with potentially dangerous functions.
-	@egrep $(BADFUNCS) $(SOURCES) || true

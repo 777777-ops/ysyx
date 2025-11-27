@@ -1,7 +1,7 @@
 #include "dbg.h"
 #include "rom.h"
 
-static uint32_t code[1024 * 1024] = {
+static uint32_t code[1024 * 1024 * 4] = {
     0x000010b7,
     0x00500113,
     0x00300193,
@@ -18,7 +18,9 @@ void load_file_rom(FILE* file){
 
    rewind(file);	
    size_t bytes_read = 1; //debug   
-   bytes_read = fread(code,sizeof(int),1024 * 1024,file);
+   bytes_read = fread(code,sizeof(int),1024 * 1024 * 4,file);
+   UNUSED(bytes_read);
+
    return;
 }
 

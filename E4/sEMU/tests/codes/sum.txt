@@ -1,14 +1,5 @@
 Disassembly of section .text:
-x1 ra
-x2 sp
-x5 t0
-x6 t1
-x7 t2
-x8 s0
-x9 s1
-x10 a0
-x11 a1
-
+5822
 00000000 <_start>:
    0:	00000413          	addi	s0,zero,0
    4:	00051137          	lui	sp,0x51
